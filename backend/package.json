@@ -13,7 +13,7 @@
   "scripts": {
     "start": "nodemon src/index.js --ext js,graphql --exec babel-node",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "NODE_ENV=production babel-node server.js"
+    "deploy": "NODE_ENV=production babel-node src/index.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",
