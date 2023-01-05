@@ -23,7 +23,7 @@ const yoga = createYoga({
     MapModel,
     UserModel,
   },
-  graphqlEndpoint: '/',
+  graphqlEndpoint: '/graphql',
 });
 
 const __dirname = path.resolve();

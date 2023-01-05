@@ -6,13 +6,11 @@ import {
 } from '@apollo/client';
 import { HookProvider } from './hook/usehook';
 
-const httpLink = new HttpLink({
-  uri: '/4000',
-});
+
 
 
 const client = new ApolloClient({ 
-  link: httpLink,
+  uri: '/graphql',
   cache: new InMemoryCache(),
 });
 
