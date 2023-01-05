@@ -10,7 +10,7 @@ import { HookProvider } from './hook/usehook';
 
 const PORT = process.env.PORT || 4000;
 const client = new ApolloClient({ 
-  uri: PORT,
+  uri: '/',
   cache: new InMemoryCache(),
 });
 
