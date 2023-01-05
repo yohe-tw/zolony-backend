@@ -8,9 +8,9 @@ import { HookProvider } from './hook/usehook';
 
 
 
-
+const PORT = process.env.PORT || 4000;
 const client = new ApolloClient({ 
-  uri: '/graphql',
+  uri: PORT,
   cache: new InMemoryCache(),
 });
 
