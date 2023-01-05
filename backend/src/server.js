@@ -8,6 +8,8 @@ import express from "express"
 import Query from './resolvers/Query';
 import Mutation from './resolvers/Mutation';
 
+const app = express();
+
     
 const yoga = createYoga({
   schema: createSchema({
@@ -27,8 +29,8 @@ const yoga = createYoga({
 const server = createServer(yoga);
 
 const __dirname = path.resolve();
-server.use(express.static(path.join(__dirname, "../frontend", "build")));
-server.get("/*", function (req, res) {
+app.use(express.static(path.join(__dirname, "../frontend", "build")));
+app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
 });
 
