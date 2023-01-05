@@ -34,5 +34,9 @@ app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
 });
 
+const APP_PORT = process.env.PORT + '/api'
+app.listen(APP_PORT, () => { 
+  console.log(`Example app listening on port ${APP_PORT}!`)
+});
 
 export default server;
