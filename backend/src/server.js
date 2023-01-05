@@ -32,6 +32,8 @@ app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
 });
 
-const server = createServer(yoga, app);
+app.use('/graphql', yoga);
+
+//const server = createServer(yoga, app);
 
 export default server;
