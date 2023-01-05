@@ -32,7 +32,7 @@ server.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
 });
 
-server.use('/graphql', yoga);
+server.use('/', yoga);
 
 //const server = createServer(yoga, app);
 
