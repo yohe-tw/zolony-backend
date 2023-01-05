@@ -26,14 +26,12 @@ const yoga = createYoga({
   graphqlEndpoint: '/',
 });
 
-const server = createServer(yoga);
-
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "../frontend", "build")));
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
 });
 
-app.set('port', process.env.PORT || 4000)
+const server = createServer(yoga, app);
 
 export default server;
