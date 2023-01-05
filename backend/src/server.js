@@ -8,7 +8,7 @@ import express from "express"
 import Query from './resolvers/Query';
 import Mutation from './resolvers/Mutation';
 
-const app = express();
+const server = express();
 
     
 const yoga = createYoga({
@@ -27,12 +27,12 @@ const yoga = createYoga({
 });
 
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "../frontend", "build")));
-app.get("/*", function (req, res) {
+server.use(express.static(path.join(__dirname, "../frontend", "build")));
+server.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
 });
 
-app.use('/graphql', yoga);
+server.use('/graphql', yoga);
 
 //const server = createServer(yoga, app);
 
