@@ -10,7 +10,6 @@ const initBlock = (type) => { //0 means air, 1 means concrete
   }
   else if(type === 1){
     block = {
-      blockName: 'Concrete',
       type: 1,
       breakable: false,
       states: {
@@ -24,29 +23,17 @@ const initBlock = (type) => { //0 means air, 1 means concrete
 
 const initMap = (x, y, z, mapName, user) => {
   let newPlayground = [];
-  let newBasePlayground = [];
-  for(let i = 0; i < y; i++){
-    let newSubPlayground = [];
-    for(let j = 0; j < z; j++){
-      const newBlock = initBlock(1);
-      newSubPlayground.push( newBlock );
-    }
-    newBasePlayground.push( newSubPlayground );
-  }
-  newPlayground.push( newBasePlayground );
 
-  for(let i = 1; i < x; i++){
-    let newSubPlayground = [];
-    for(let j = 0; j < y; j++){
-      let newSubSubPlayground = [];
-      for(let k = 0; k < z; k++){
-        const newBlock = initBlock(0);
-        newSubSubPlayground.push( newBlock );
+  for (let i = 0; i < x; i++) {
+    newPlayground.push([]);
+    for (let j = 0; j < y; j++) {
+      newPlayground[i].push([]);
+      for (let k = 0; k < z; k++) {
+        newPlayground[i][j].push(j === 0 ? initBlock(1) : initBlock(0));
       }
-      newSubPlayground.push( newSubSubPlayground );
     }
-    newPlayground.push( newSubPlayground );
   }
+
   const newMap = {
     xLen: x,
     yLen: y,
@@ -56,7 +43,7 @@ const initMap = (x, y, z, mapName, user) => {
     validation: null,
     playground: newPlayground,
   }
-  console.log(newMap)
+  console.log("NEW", newMap)
   return newMap;
 }
 
@@ -121,6 +108,7 @@ const Mutation = {
   },
 
   editMyMap: async (parent, args) => {
+    console.log(args.data);
     let user = await UserModel.findOne({ name: args.data.name, password: args.data.password });
     if(!user){
       console.log(`user ${args.data.name} not found.`);

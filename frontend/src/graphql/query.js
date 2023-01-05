@@ -20,7 +20,6 @@ export const LOG_IN = gql`
                 zLen
                 mapName
                 playground {
-                    blockName
                     type
                     breakable
                     states {
@@ -39,7 +38,14 @@ export const LOG_IN = gql`
                         south
                         west
                         north
+                    }
                 }
+                availableBlocks
+                validation {
+                    levers
+                    lamps
+                    boolFuncs
+                    timeout
                 }
             }
         }
@@ -61,7 +67,6 @@ export const GET_MAP =  gql`
             zLen
             mapName
             playground {
-                blockName
                 type
                 breakable
                 states {

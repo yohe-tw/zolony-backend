@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppstoreOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import './css/Sidebar.css'
+import { UseHook } from '../hook/usehook';
 
-const Sidebar = ({collapsed, setPageNum}) => {
+const Sidebar = ({ collapsed }) => {
+  const { pageNum, setPageNum } = UseHook();
   function getItem(label, key, icon, children, type) {
     return {
       key,
@@ -15,20 +17,28 @@ const Sidebar = ({collapsed, setPageNum}) => {
   }
 
   const items = [
-    getItem('Zolony', '1'),
-    getItem('Signal', '2'),
-    getItem('Transmit', '3'),
-    getItem('Repeater', '4'),
-    getItem('Navigation Two', 'sub', <AppstoreOutlined />, [
-        getItem('Option 5', '5'),
-        getItem('Option 6', '6'),
-    ]),
+    getItem('A 首頁', '1'),
+    getItem('B 一切的開端．訊號', '2'),
+    getItem('C 明與暗的旅程．訊號傳遞', '3'),
+    getItem('D 強棒接力．紅石中繼器', '4'),
+    getItem('E 顛倒是非．紅石火把', '5'),
+    getItem('邏輯電路', 'sub', <AppstoreOutlined />, [
+      getItem('F 邏輯閘．非或與', '6'),
+      getItem('G 計算機的第一步．加法器', '7')
+    ])
   ];
+
+  let [selectedKeys, setSelectedKeys] = useState([]);
 
   function handleSelect({ key }) {
     setPageNum(key);
+    setSelectedKeys(['1']);
   }
-  
+
+  useEffect(() => {
+    setSelectedKeys([pageNum.toString()]);
+  },[pageNum]);
+
   return (
     <div className="sidebar">
       <Menu
@@ -39,81 +49,10 @@ const Sidebar = ({collapsed, setPageNum}) => {
         inlineCollapsed={collapsed}
         items={items}
         onSelect={handleSelect}
+        selectedKeys={selectedKeys}
       />
     </div>
   );
 }
 
 export default Sidebar;
-
-/*
-import React, { useState } from 'react';
-import './index.css';
-import {
-  AppstoreOutlined,
-  ContainerOutlined,
-  DesktopOutlined,
-  MailOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  PieChartOutlined,
-} from '@ant-design/icons';
-import { Button, Menu } from 'antd';
-function getItem(label, key, icon, children, type) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-  };
-}
-const items = [
-  getItem('Option 1', '1', <PieChartOutlined />),
-  getItem('Option 2', '2', <DesktopOutlined />),
-  getItem('Option 3', '3', <ContainerOutlined />),
-  getItem('Navigation One', 'sub1', <MailOutlined />, [
-    getItem('Option 5', '5'),
-    getItem('Option 6', '6'),
-    getItem('Option 7', '7'),
-    getItem('Option 8', '8'),
-  ]),
-  getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [
-    getItem('Option 9', '9'),
-    getItem('Option 10', '10'),
-    getItem('Submenu', 'sub3', null, [getItem('Option 11', '11'), getItem('Option 12', '12')]),
-  ]),
-];
-const App = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed);
-  };
-  return (
-    <div
-      style={{
-        width: 256,
-      }}
-    >
-      <Button
-        type="primary"
-        onClick={toggleCollapsed}
-        style={{
-          marginBottom: 16,
-        }}
-      >
-        {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-      </Button>
-      <Menu
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
-        mode="inline"
-        theme="dark"
-        inlineCollapsed={collapsed}
-        items={items}
-      />
-    </div>
-  );
-};
-export default App;
-*/

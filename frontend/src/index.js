@@ -6,11 +6,15 @@ import {
 } from '@apollo/client';
 import { HookProvider } from './hook/usehook';
 
+const LINK = process.env.NODE_ENV === "production" ? "/" : "http://localhost:4000/";
+
+const httpLink = new HttpLink({
+  uri: LINK,
+});
 
 
-const PORT = process.env.PORT || 4000;
 const client = new ApolloClient({ 
-  uri: '/',
+  link: httpLink,
   cache: new InMemoryCache(),
 });
 
