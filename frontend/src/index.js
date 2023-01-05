@@ -7,7 +7,7 @@ import {
 import { HookProvider } from './hook/usehook';
 
 const httpLink = new HttpLink({
-  uri: '/graphql',
+  uri: '/4000',
 });
 
 

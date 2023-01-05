@@ -35,7 +35,7 @@ db.once('open', () => {
 */
 
 
-const PORT = process.env.PORT || 4000;
+const PORT = 4000;
 server.listen(PORT, () => { 
   console.log(`Example app listening on port ${PORT}!`)
 });
