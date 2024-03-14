@@ -1,4 +1,4 @@
-# 前言
+# 前言 
 
 目前此repo主要為展示111-1學期台大電機系所開的網路服務程式設計，某一組的final project。此專案名稱為紅石教學網，目前專案部屬的網頁已經失效，主要功用為展示以前做過的內容供履歷檢視。另有一demo影片因為個人資料隱私問題不會放在這裡，而是會直接提供給欲檢視履歷之人。另為確保組員個資不外露，具有個資的部分我會用<font color='red'>xx</font>或是<font color='red'>A同學</font>來代替，而此github的帳號本人yohe-tw的名稱會用<font color='red'>C同學</font>來代替。
 另有一公開的協作repo，為完成作業後公開展示的repo。[連結點此](https://github.com/Zollo757347/Zolony)
